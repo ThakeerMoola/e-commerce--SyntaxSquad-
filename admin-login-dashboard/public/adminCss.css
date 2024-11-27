@@ -1,0 +1,90 @@
+/* style.css */
+body {
+  font-family: 'Roboto', sans-serif;
+ background: url(AdminBG.jpg);
+  margin: 0;
+  padding: 70px;
+  color: #fff;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 25px 30px;
+  background: transparent;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+h2 {
+  text-align: center;
+  color: black;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: BLACK;
+  font-weight: 500;
+}
+
+input {
+  width: 93%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 15px;
+  color: #333;
+  transition: all 0.3s ease-in-out;
+}
+
+input:focus {
+  border-color: #6a11cb;
+  box-shadow: 0 0 8px rgba(106, 17, 203, 0.5);
+  outline: none;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+p {
+  text-align: center;
+  font-size: 14px;
+  color: #eee;
+  margin-top: 10px;
+}
+
+a {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+a:hover {
+  color: #f9d423;
+  text-decoration: underline;
+}

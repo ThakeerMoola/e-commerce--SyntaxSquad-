@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      
+      header {
+        background-color: #333;
+        color: white;
+        padding: 15px;
+        text-align: center;
+      }
+      
+      header nav ul {
+        list-style-type: none;
+      }
+      
+      header nav ul li {
+        display: inline;
+        margin-right: 15px;
+      }
+      
+      header nav ul li a {
+        color: white;
+        text-decoration: none;
+      }
+      
+      .dashboard-container {
+        padding: 30px;
+        background-color: #fff;
+        margin: 20px auto;
+        max-width: 1200px;
+        border-radius: 8px;
+      }
+      
+      .user-info {
+        margin-bottom: 20px;
+      }
+      
+      .order-status-tabs {
+        margin-top: 20px;
+      }
+      
+      .tabs {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+      }
+      
+      .tablinks {
+        background-color: #f1f1f1;
+        padding: 10px 20px;
+        cursor: pointer;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      
+      .tablinks:hover {
+        background-color: #ddd;
+      }
+      
+      .tablinks.active {
+        background-color: #4CAF50;
+        color: white;
+      }
+      
+      .tabcontent {
+        display: none;
+        background-color: #f9f9f9;
+        padding: 20px;
+        margin-top: 10px;
+        border-radius: 5px;
+      }
+      
+      .order-history {
+        margin-top: 20px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .order-history ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      
+      .order-history ul li {
+        background-color: #f8f8f8;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      
+      .order-history ul li p {
+        margin: 5px 0;
+      }
+      
+      .order-history h3 {
+        margin-top: 20px;
+        font-size: 1.2em;
+        color: #333;
+      }
+      
+      .order-history p {
+        font-size: 1em;
+        color: #555;
+      }
+      
+      .order-status-tabs .tabs {
+        display: flex;
+        gap: 15px;
+      }
+      
+      .order-status-tabs .tabs button {
+        background-color: #e7e7e7;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+      
+      .order-status-tabs .tabs button:hover {
+        background-color: #ddd;
+      }
+      
+      .order-status-tabs .tabs button.active {
+        background-color: #4CAF50;
+        color: white;
+      }
+      
+      .dashboard-container {
+        max-width: 1200px;
+        margin: 30px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+      
+      h1 {
+        color: #333;
+      }
+      
+      h2 {
+        margin-top: 20px;
+        color: #333;
+        font-size: 1.5em;
+      }
+      
+      h3 {
+        margin-top: 10px;
+        color: #333;
+      }
+      
+      .user-info p {
+        font-size: 1.1em;
+        color: #555;
+      }
+      
+      .tabs button.active {
+        background-color: #4CAF50;
+        color: white;
+      }
+      
+      .tabs {
+        margin-bottom: 15px;
+      }
+      
+            
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- Optional for alerts -->
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="dashboard-container">
+    <h1>Welcome, <%= user.name %></h1>
+    <div class="user-info">
+      <p>Email: <%= user.email %></p>
+      <p>Joined: <%= user.createdAt.toDateString() %></p>
+    </div>
+
+    <h2>My Orders</h2>
+
+    <div class="order-status-tabs">
+      <!-- Tab links -->
+      <div class="tabs">
+        <% Object.keys(orders).forEach((status, index) => { %>
+          <button class="tablinks" onclick="openTab(event, '<%= status %>')">
+            <%= status %> Orders
+          </button>
+        <% }) %>
+      </div>
+
+      <!-- Tab content -->
+      <% Object.keys(orders).forEach((status, index) => { %>
+        <div id="<%= status %>" class="tabcontent">
+          <h3><%= status %> Orders</h3>
+          <% if (orders[status].length === 0) { %>
+            <p>No orders with this status.</p>
+          <% } else { %>
+            <ul>
+              <% orders[status].forEach(order => { %>
+                <li>
+                  <p>Order ID: <%= order._id %></p>
+                  <p>Status: <%= order.status %></p>
+                  <p>Total Price: $<%= order.total_price %></p>
+                  <a href="/dashboard/<%= order._id %>">View Order History</a>
+                </li>
+              <% }) %>
+            </ul>
+          <% } %>
+        </div>
+      <% }) %>
+
+      <!-- Order History Display -->
+      <% if (orderDetails) { %>
+        <div class="order-history">
+          <h2>Order History for <%= orderDetails._id %></h2>
+          <p>Status: <%= orderDetails.status %></p>
+          <p>Total Price: $<%= orderDetails.total_price %></p>
+
+          <h3>Items:</h3>
+          <ul>
+            <% orderDetails.items.forEach(item => { %>
+              <li>
+                <p>Product: <%= item.product.name %></p>
+                <p>Price: $<%= item.price %></p>
+                <p>Quantity: <%= item.quantity %></p>
+              </li>
+            <% }) %>
+          </ul>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
+  <script>
+    function openTab(evt, status) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(status).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+
+    // Default open tab
+    document.getElementsByClassName("tablinks")[0].click();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce website</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+ <!---  font awesome cdn -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"/>
+ 
+
+
+ <!---  font awesome cdn -->
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header class="header">
+
+        <a href="" class="logo"><i class="fa-solid fa-cart-shopping"></i>Syntax
+        </a>
+
+        <nav class="navbar">
+            <a href ="#home">Home</a>
+            <a href ="#features">features</a>
+            <a href ="#products">products</a>
+            <a href ="#categories">categories</a>
+            <a href ="#review">reviews</a>
+            <a href ="http://localhost:3000/admin-login.html">Admin Dashboard</a>
+            <a href ="#blogs">blogs</a>
+        </nav>
+
+        <div class="icons">
+            <div class="fas fa-bars" id="menu-btn"></div>
+            <div class="fas fa-search" id="search-btn"></div>
+            <div class="fas fa-shopping-cart" id="cart-btn"></div>
+            <div class="fas fa-user" id="login-btn"></div>
+            
+        </div>
+        
+        <form action="" class="search-form">
+        <input type="search" id="search-box" placeholder="search here..">
+        <label for="search-box" class="fas fa-search"></label>
+        <select name="category" id="category" class="filter-dropdown">
+            <option value="">All Categories</option>
+            <option value="laptops">Laptops</option>
+            <option value="smartphones">Smartphones</option>
+            <option value="chargers">Chargers</option>
+        </select>
+        <button type="submit" class="bt">Filter Search</button>
+    </form>
+
+        
+
+        <div class="shoooping-cart">
+           
+            <div class="total">total: R100/-</div>
+            <a href="#" class="btn">Checkout</a>
+        </div>
+
+        <!-- Login Form -->
+      
+<!-- Login Form -->
+<form action="" class="login-form" id="login">
+    <h3>Login Now</h3>
+    <input type="email" placeholder="Your email" class="box" required>
+    <input type="password" placeholder="Your password" class="box" required>
+    <p>Forgot your password? <a href="#">Click here</a></p>
+    <p>Don't have an account? <a href="#register" id="register-link">Create here</a></p>
+    <input type="submit" value="Login Now" class="btn">
+</form>
+
+<!-- Register Form -->
+<form action="" class="login-form" id="register" style="display: none;">
+    <h3>Register Now</h3>
+    <input type="text" placeholder="Your name" class="box" required>
+    <input type="text" placeholder="Your surname" class="box" required>
+    <input type="text" placeholder="Your username" class="box" required>
+    <input type="tel" placeholder="Your phone number" class="box" required>
+    <input type="email" placeholder="Your email" class="box" required>
+    <input type="password" placeholder="Your password" class="box" required>
+    <p>Already have an account? <a href="#login" id="login-link">Login here</a></p>
+    <input type="submit" value="Register Now" class="btn">
+</form>
+
+        </header>
+       <!--- home section starts-->
+    <section class="home" id="#home">
+ <div class="content">
+    <h3>"Power Up Your Life with the Best <span>Laptops, Phones, and Chargers!"</span></h3>
+    <p>Discover top-quality laptops, smartphones, and chargers all in one place. Whether you’re upgrading your tech, staying connected, or keeping your devices powered, we’ve got you covered with the latest products at unbeatable prices!</p>
+   <a href="#" class="btn">shop now</a>
+</div>
+
+    </section>
+
+     <!--- home section end-->
+
+
+       <!--- features section end-->
+<section class="features" id="features">
+    <h1 class="heading">our <span>features</span></h1>
+
+    <div class="box-container">
+        <div class="box">
+            <img src="image/bacground.jfif" alt="">
+            <h3>Latest Tech</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit non, magnam illum perferendis eveniet fugiat ab sapiente. Distinctio itaque dolorum, maxime quasi, tempore blanditiis delectus adipisci fuga necessitatibus, cupiditate aliquid.</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="image/delivery.jfif" alt="">
+            <h3>Free delivery</h3>
+            <p>Syntax offers free delivery on orders over R2500, with reliable, 24-hour delivery guaranteed. Our experienced delivery team ensures your parcels are handled with care and arrive safely and on time, every time.</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+
+        <div class="box">
+            <img src="image/stripeLogo.png" alt="">
+            <h3>Stripe Payments</h3>
+            <p>Syntax provides a secure and reliable payment solution, ensuring all transactions are swift, seamless, and hassle-free for every user.</p>
+            <a href="#" class="btn">read more</a>
+        </div>
+    </div>
+</section>
+
+
+   <!--- Product section -->
+<section class="products" id="products">
+    <h1 class="heading">our <span>products</span></h1>
+
+    <div class=" swiper product-slider">
+<div class="swiper-wrapper">
+            <div class="swiper-slide box">
+                <img src="image/hp.jfif" alt="">
+                <h3>Laptops</h3>
+                <div class="price">R23000/ -- 10.00/ -</div>
+
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+               <i class="fas fa-star-half-alt"></i>
+             </div>
+<a href="#" class="btn"> add to cart</a>
+</div>
+
+<div class="swiper-slide box">
+    <img src="image/Iphone.jfif" alt="">
+    <h3>Phone</h3>
+    <div class="price">R23000/ -- 10.00/ -</div>
+
+  <div class="stars">
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+   <i class="fas fa-star-half-alt"></i>
+ </div>
+<a href="#" class="btn"> add to cart</a>
+</div>
+
+<div class="swiper-slide box">
+    <img src="image/hp.jfif" alt="">
+    <h3>Laptops</h3>
+    <div class="price">R23000/ -- 10.00/ -</div>
+
+  <div class="stars">
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+   <i class="fas fa-star-half-alt"></i>
+ </div>
+<a href="#" class="btn"> add to cart</a>
+</div>
+
+<div class="swiper-slide box">
+    <img src="image/hp.jfif" alt="">
+    <h3>Laptops</h3>
+    <div class="price">R23000/ -- 10.00/ -</div>
+<div class="stars">
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star-half-alt"></i>
+</div>
+<a href="#" class="btn"> add to cart</a>
+
+</div>
+
+
+<div class="swiper-slide box">
+     <img src="image/hp.jfif" alt="">
+    <h3>Laptops</h3>
+    <div class="price">R23000/ -- 10.00/ -</div>
+<div class="stars">
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star-half-alt"></i>
+</div>
+<a href="#" class="btn"> add to cart</a>
+</div>
+
+            
+<div class="swiper-slide box">
+    <img src="image/hp.jfif" alt="">
+    <h3>Laptops</h3>
+    <div class="price">R23000/ -- 10.00/ -</div>
+<div class="stars">
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star-half-alt"></i>
+</div>
+<a href="#" class="btn"> add to cart</a>
+</div>
+
+</div>
+ </div>
+
+
+    <div class="swiper product-slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide box">
+                <img src="image/hp.jfif" alt="">
+                <h3>Laptops</h3>
+                <div class="price">R23000/ -- 10.00/ -</div>
+       <div class="stars">
+         <i class="fas fa-star"></i>
+         <i class="fas fa-star"></i>
+         <i class="fas fa-star"></i>
+         <i class="fas fa-star"></i>
+         <i class="fas fa-star-half-alt"></i>
+       </div>
+<a href="#" class="btn"> add to cart</a>
+</div>
+
+<div class="swiper-slide box">
+    <img src="image/hp.jfif" alt="">
+    <h3>Laptops</h3>
+    <div class="price">R23000/ -- 10.00/ -</div>
+<div class="stars">
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star-half-alt"></i>
+</div>
+<a href="#" class="btn"> add to cart</a>
+
+</div>
+
+
+<div class="swiper-slide box">
+    <img src="image/hp.jfif" alt="">
+    <h3>Laptops</h3>
+    <div class="price">R23000/ -- 10.00/ -</div>
+<div class="stars">
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star-half-alt"></i>
+</div>
+<a href="#" class="btn"> add to cart</a>
+
+</div>
+
+            
+<div class="swiper-slide box">
+   <img src="image/hp.jfif" alt="">
+  <h3>Laptops</h3>
+  <p>mhjnj vrn hjjhbaf hjh</p>
+  <div class="price">R23000/ -- 10.00/ -</div>
+<div class="stars">
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star"></i>
+    <i class="fas fa-star-half-alt"></i>
+</div>
+<a href="#" class="btn"> add to cart</a>
+</div>
+</div>
+
+</section>
+
+<section class="categories" id="categories">
+<h1 class="heading"> product <span>Browse Our Categories</span></h1>
+<div class="box-container">
+    <div class="box">
+        <img src="image/hp.jfif" alt="">
+        <h3>laptops</h3>
+        <p>upto 25000</p>
+        <a href="#" class="btn">shop now</a>
+
+    </div>
+
+    <div class="box">
+        <img src="image/laptop.jfif" alt="">
+        <h3>laptops</h3>
+        <p>upto 25000</p>
+        <a href="#" class="btn">shop now</a>
+
+    </div>
+
+    <div class="box">
+        <img src="image/Iphone.jfif" alt="">
+        <h3>Iphones</h3>
+        <p>upto 30000</p>
+        <a href="#" class="btn">shop now</a>
+
+    </div>
+
+    <div class="box">
+        <img src="image/Iphone.jfif" alt="">
+        <h3>Chargers</h3>
+        <p>upto 25000</p>
+        <a href="#" class="btn">shop now</a>
+
+    </div>
+</div>
+</section>
+
+<section class="review" id="review">
+    <h1 class="heading"> customer's <span>reviews</span></h1>
+    <div class="swiper review-slider">
+        <div class="swiper-wrapper">
+            <div class="swiper-slider box">
+                <img src="image/pic1.jfif" alt="">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi tempore fugiat excepturi itaque ad expedita molestiae sed repellendus quis delectus?</p>
+              <h3>John deo</h3>
+              <div class="stars">
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+
+            <div class="swiper-slider box">
+                <img src="image/pic2.jfif" alt="">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi tempore fugiat excepturi itaque ad expedita molestiae sed repellendus quis delectus?</p>
+              <h3>John deo</h3>
+              <div class="stars">
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+            <div class="swiper-slider box">
+                <img src="image/pic1.jfif" alt="">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi tempore fugiat excepturi itaque ad expedita molestiae sed repellendus quis delectus?</p>
+              <h3>John deo</h3>
+              <div class="stars">
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+            <div class="swiper-slider box">
+                <img src="image/pic1.jfif" alt="">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi tempore fugiat excepturi itaque ad expedita molestiae sed repellendus quis delectus?</p>
+              <h3>John deo</h3>
+              <div class="stars">
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+            <div class="swiper-slider box">
+                <img src="image/pic1.jfif" alt="">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi tempore fugiat excepturi itaque ad expedita molestiae sed repellendus quis delectus?</p>
+              <h3>John deo</h3>
+              <div class="stars">
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+
+            <div class="swiper-slider box">
+                <img src="image/pic1.jfif" alt="">
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi tempore fugiat excepturi itaque ad expedita molestiae sed repellendus quis delectus?</p>
+              <h3>John deo</h3>
+              <div class="stars">
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star"></i>
+                <i clas="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+ <!-- Product display section -->
+ <div class="products-container">
+    <!-- Products will be dynamically added here -->
+  </div>
+
+  <script>
+    // Fetch and display products
+    async function fetchAndDisplayProducts() {
+        try {
+            const response = await fetch('http://localhost:3000/products'); // Your API endpoint
+            const products = await response.json();
+
+            // Get the container element where products will be displayed
+            const productsContainer = document.querySelector('.products-container');
+            productsContainer.innerHTML = ''; // Clear any existing content
+
+            // Loop through the products and create HTML elements to display them
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.classList.add('product-card');
+
+                // Set the content of the product card
+                productCard.innerHTML = `
+                    <img src="${product.image_url}" alt="${product.name}" class="product-image" />
+                    <h3 class="product-name">${product.name}</h3>
+                    <p class="product-price">$${product.price}</p>
+                    <p class="product-description">${product.description}</p>
+                    <button class="btn add-to-cart">Add to Cart</button>
+                `;
+
+                // Append the product card to the container
+                productsContainer.appendChild(productCard);
+            });
+        } catch (error) {
+            console.error('Error fetching products:', error);
+        }
+    }
+
+    // Call the function on page load
+    window.onload = fetchAndDisplayProducts;
+  </script>
+  
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!--- Javascript file-->
+    <script src="Script.js">
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 1rem 2rem;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    table th, table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    table th {
+      background-color: #333;
+      color: white;
+    }
+
+    .btn {
+      padding: 5px 10px;
+      margin: 2px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn.add {
+      background-color: #28a745;
+      color: #fff;
+    }
+
+    .btn.edit {
+      background-color: #ffc107;
+      color: #fff;
+    }
+
+    .btn.delete {
+      background-color: #dc3545;
+      color: #fff;
+    }
+
+    .form {
+      margin-top: 20px;
+    }
+
+    .form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form input, .form textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .form button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Admin Dashboard</h1>
+  </header>
+
+  <div class="container">
+    <h2>Manage Products</h2>
+    <button class="btn add" onclick="showAddForm()">Add New Product</button>
+
+    <table id="productsTable">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Product rows will be injected here -->
+      </tbody>
+    </table>
+
+    <div class="form" id="productForm" style="display: none;">
+      <h3 id="formTitle">Add Product</h3>
+      <label for="productName">Name</label>
+      <input type="text" id="productName" required>
+
+      <label for="productPrice">Price</label>
+      <input type="number" id="productPrice" required>
+
+      <label for="productStock">Stock</label>
+      <input type="number" id="productStock" required>
+
+      <label for="productDescription">Description</label>
+      <textarea id="productDescription" required></textarea>
+
+      <label for="productImage">Image</label>
+      <input type="file" id="productImage" accept="image/*">
+
+      <button type="button" onclick="submitProduct()">Save Product</button>
+    </div>
+  </div>
+
+  <script>
+    const apiUrl = 'http://localhost:3000/products'; // Replace with your API URL
+    let editingProductId = null;
+
+    // Fetch and display products
+    // Fetch and display products
+async function fetchProducts() {
+  try {
+    const response = await fetch(apiUrl);
+    const products = await response.json();
+    const tableBody = document.querySelector('#productsTable tbody');
+    tableBody.innerHTML = '';
+
+    products.forEach(product => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${product.id}</td>
+        <td>${product.name}</td>
+        <td>R ${product.price}</td> <!-- Add "R" before the price -->
+        <td>${product.stock}</td>
+        <td>${product.description}</td>
+        <td><img src="${product.image_url}" alt="${product.name}" width="50"></td>
+        <td>
+          <button class="btn edit" onclick="editProduct(${product.id}, '${product.name}', ${product.price}, ${product.stock}, '${product.description}', '${product.image_url}')">Edit</button>
+          <button class="btn delete" onclick="deleteProduct(${product.id})">Delete</button>
+        </td>
+      `;
+      tableBody.appendChild(row);
+    });
+  } catch (error) {
+    console.error('Error fetching products:', error);
+  }
+}
+
+
+    // Show add/edit form
+    function showAddForm() {
+      editingProductId = null;
+      document.getElementById('formTitle').textContent = 'Add Product';
+      document.getElementById('productForm').style.display = 'block';
+      clearForm();
+    }
+
+    function editProduct(id, name, price, stock, description, imageUrl) {
+      editingProductId = id;
+      document.getElementById('formTitle').textContent = 'Edit Product';
+      document.getElementById('productForm').style.display = 'block';
+
+      document.getElementById('productName').value = name;
+      document.getElementById('productPrice').value = price;
+      document.getElementById('productStock').value = stock;
+      document.getElementById('productDescription').value = description;
+      document.getElementById('productImage').value = imageUrl;
+    }
+
+    // Submit new or edited product
+    async function submitProduct() {
+      const product = {
+        name: document.getElementById('productName').value,
+        price: parseFloat(document.getElementById('productPrice').value),
+        stock: parseInt(document.getElementById('productStock').value),
+        description: document.getElementById('productDescription').value,
+      };
+
+      const formData = new FormData();
+      formData.append('name', product.name);
+      formData.append('price', product.price);
+      formData.append('stock', product.stock);
+      formData.append('description', product.description);
+
+      // Add image if uploaded
+      const imageFile = document.getElementById('productImage').files[0];
+      if (imageFile) {
+        formData.append('image', imageFile);
+      }
+
+      try {
+        if (editingProductId) {
+          await fetch(`${apiUrl}/${editingProductId}`, {
+            method: 'PUT',
+            body: formData,
+          });
+        } else {
+          await fetch(apiUrl, {
+            method: 'POST',
+            body: formData,
+          });
+        }
+        document.getElementById('productForm').style.display = 'none';
+        fetchProducts();
+      } catch (error) {
+        console.error('Error submitting product:', error);
+      }
+    }
+
+    // Delete product
+    async function deleteProduct(id) {
+      try {
+        await fetch(`${apiUrl}/${id}`, { method: 'DELETE' });
+        fetchProducts();
+      } catch (error) {
+        console.error('Error deleting product:', error);
+      }
+    }
+
+    // Clear form inputs
+    function clearForm() {
+      document.getElementById('productName').value = '';
+      document.getElementById('productPrice').value = '';
+      document.getElementById('productStock').value = '';
+      document.getElementById('productDescription').value = '';
+      document.getElementById('productImage').value = '';
+    }
+
+    // Initialize dashboard
+    fetchProducts();
+  </script>
+</body>
+</html>

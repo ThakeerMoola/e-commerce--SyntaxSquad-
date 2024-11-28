@@ -3,11 +3,12 @@ const bcrypt = require('bcryptjs');
 
 // Set up PostgreSQL connection pool
 const pool = new Pool({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'SyntaxSquad_Db',
-  password: 'Capaciti123',
-  port: 5432,
+  user: 'avnadmin', // Your Aiven username
+  host: 'syntax-squad-db-syntax-squad.c.aivencloud.com', // Aiven host
+  database: 'defaultdb', // Default DB name
+  password: 'AVNS_3f_bdelmicW79FbnSlY', // Your Aiven password (set in the Aiven dashboard)
+  port: 16939, // Aiven PostgreSQL port
+  ssl: { rejectUnauthorized: false } // Aiven requires SSL connections
 });
 
 // Admin data to insert
